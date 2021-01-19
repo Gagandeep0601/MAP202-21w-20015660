@@ -10,8 +10,6 @@ table, th, td {
 </head>
     <body>
 <?php
-$i=1;
-$j=1;
 $films = array(
             "comedy" => array (
                             0 => "Pink Panther",
@@ -42,15 +40,16 @@ array (
 );
 echo '<p>First Table</p>';
 echo '<table>';
+echo '<tr><th>MOVIE</th><th>GENRE</th></tr>';
 foreach($films as $genre => $movies)
 {  
 
-        if($j==1)
+        /*if($j==1)
         {
         echo '<th>MOVIES</th>';
         echo '<th>GENRE</th>';
         $j=0;
-        }
+        }*/
 	foreach($movies as $movie)
 	{   
         echo '<tr>';
@@ -65,7 +64,7 @@ echo '</table>';
 echo '<table>';
 echo '<p>Second Table</p>';
 
-   foreach($favorites as $details)
+  /*foreach($favorites as $details)/
    {
    if($i==1)
         {
@@ -79,7 +78,17 @@ echo '<p>Second Table</p>';
         echo '<td>' .$details["Phone"]. '</td>';
         echo '<td>' .$details["Email"]. '</td>';
         echo '</tr>';
+    }*/
+	echo '<tr><th>NAME</th><th>PHONE</th><th>EMAIL</th></tr>';
+	foreach($favorites as $key=>$value)
+{
+  echo '<tr>';
+    foreach($value as $values)
+    {
+    echo '<td>'.$values.'</td>';
     }
+  echo '</tr>';
+}
 echo '</table>';
 		
 ?>
