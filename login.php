@@ -1,8 +1,10 @@
 <?php
 session_start();
 $_SESSION['username'] = $_REQUEST['uname'];
+
 if($_SERVER['REQUEST_METHOD'] == 'POST')
  {
+	
 	require_once('user.php');
 	$user = new user();
 	$userdata = $user->userdata();
@@ -11,6 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	die;    
 }	
 ?>
+
 <html>
 	<body>
 		<?php require_once('login.html'); ?>

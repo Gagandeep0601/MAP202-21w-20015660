@@ -1,5 +1,6 @@
 <?php
 session_start();   
+
 class db
 {   
 	public function db_connect()

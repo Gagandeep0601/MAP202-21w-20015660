@@ -1,5 +1,6 @@
 <?php
 	session_start();
+
     if (password_verify($_REQUEST[password], $userdata[0]['password'])) 
 	{
 		$_SESSION['isAuthenticated'] =1;

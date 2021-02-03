@@ -1,5 +1,6 @@
 <?php
 session_start();
+
    class user
    {
 	 public function userdata()
@@ -16,5 +17,6 @@ session_start();
 	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $result;
 	 }
-   }
+  }
+
 ?>
