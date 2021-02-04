@@ -3,14 +3,15 @@
 
     if (password_verify($_REQUEST[password], $userdata[0]['password'])) 
 	{
-		$_SESSION['isAuthenticated'] =1;
+		$_SESSION['isAuthenticated'] = 1;
 		unset($_SESSION['failedAttempts']);
 		header("Location: secret.php");
 
 	} 
 	else 
-	{
-		if ($_SESSION['failedAttempts']) 
+	{   
+	    require_once('footer.php');   
+        if ($_SESSION['failedAttempts']) 
 		{
 			$_SESSION['failedAttempts']++;
 		} 

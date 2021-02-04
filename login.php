@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	$userdata = $user->userdata();
 	require_once('header.php');
 	require_once('footer.php');
-	die;    
+	die;
 }	
 ?>
 
