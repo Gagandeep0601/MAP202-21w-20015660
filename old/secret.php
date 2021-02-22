@@ -7,7 +7,7 @@
                 require_once('footer.php');
 			    if (!$_SESSION['isAuthenticated']) 
 				{
-			   header("Location: login.php");
+			   header("Location: login.php");	
                 }
                 else
 				{
