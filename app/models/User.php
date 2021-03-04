@@ -10,6 +10,26 @@ class User {
         
     }
 
+	public function register($courseid,$coursename,$departmentname,$programname)
+	{   
+		$username = strtoupper($courseid);
+		$coursename = strtoupper($coursename);
+		$departmentname = strtoupper($departmentname);
+		$programname = strtoupper($programname);
+	    $db = db_connect();
+        $statement = $db->prepare("INSERT INTO courses(courseId, courseName, department, program) VALUES (:courid,:courname,:deptname,:progname);");
+        $statement->bindValue(':courid', $courseid);
+		$statement->bindValue(':courname',$coursename);
+		$statement->bindValue(':deptname',$departmentname);
+		$statement->bindValue(':progname',$programname);
+        $statement->execute();
+		?>
+                <p>
+					<a href="/courses">DEPARTMENT</a>
+				</p>
+<?php
+    } 
+	
     public function authenticate($username, $password) {
         /*
          * if username and password good then
@@ -18,8 +38,7 @@ class User {
 		$username = strtolower($username);
 		$db = db_connect();
         $statement = $db->prepare("select * from login
-                                WHERE username = :name;
-                ");
+                                WHERE username = :name; ");
         $statement->bindValue(':name', $username);
         $statement->execute();
         $rows = $statement->fetch(PDO::FETCH_ASSOC);
@@ -41,4 +60,6 @@ class User {
 		}
     }
 
+
 }
+

@@ -5,6 +5,12 @@
             <div class="col-lg-12">
                 <h1>Welcome <?php echo $_SESSION['username'] ?> </h1>
                 <p class="lead"> <?= date("F jS, Y"); ?></p>
+				<p>
+					<a href="/courses">DEPARTMENT</a>
+				</p>
+				<p>
+					<a href="/insert">INSERT HERE</a>
+				</p>
 				<form action="/logout/index" method="post">
 			    <button type="submit" class="btn btn-primary">Logout</button>
 				</form>
