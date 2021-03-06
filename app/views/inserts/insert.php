@@ -2,22 +2,29 @@
     <div class="col-sm-auto">
 		<form action="/insert/entry" method="post" >
 		<fieldset>
-			<div class="form-group">
-				<label for="name">Course Id</label>
-				<input required type="text" class="form-control" name="courseid">
-			</div>
-			<div class="form-group">
-				<label for="name">Course Name</label>
-				<input required type="text" class="form-control" name="course">
-			</div>
-			<div class="form-group">
-				<label for="name">Department</label>
-				<input required type="text" class="form-control" name="department">
-			</div>
-			<div class="form-group">
-				<label for="name">Program</label>
-				<input required type="text" class="form-control" name="program">
-			</div>
+			<caption><strong>Insert Detail</strong></caption>
+			<table>
+			    <tr>
+				    <td><label for="name">Course Id</label></td>
+				    <td><input required type="text" class="form-control" name="courseid"></td>
+			    </tr>
+		
+			    <tr>
+				    <td><label for="name">Course Name</label></td>
+					<td><input required type="text" class="form-control" name="course"></td>
+				</tr>
+		     
+				<tr>
+				   <td><label for="name">Department</label></td>
+				   <td><input required type="text" class="form-control" name="department"></td>
+			    <tr>
+			    
+				<tr>
+				  <td><label for="name">Program</label></td>
+				  <td><input required type="text" class="form-control" name="program"></td>
+				</tr>
+			</table>	
+			
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		</fieldset>
 		</form> 
