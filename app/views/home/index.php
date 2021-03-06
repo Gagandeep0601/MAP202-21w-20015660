@@ -6,10 +6,10 @@
                 <h1>Welcome <?php echo $_SESSION['username'] ?> </h1>
                 <p class="lead"> <?= date("F jS, Y"); ?></p>
 				<p>
-					<a href="/courses">DEPARTMENT</a>
+					<a href="/courses">DEPARTMENT</a>  <!--link to see department detail-->
 				</p>
 				<p>
-					<a href="/insert">INSERT HERE</a>
+					<a href="/insert">INSERT HERE</a> <!--link to insert the data-->
 				</p>
 				<form action="/logout/index" method="post">
 			    <button type="submit" class="btn btn-primary">Logout</button>

@@ -10,7 +10,7 @@
 	    
 	<div class="row">
             <div class="col-lg-12">
-		     <?php foreach($data['departments'] as $dept) { ?>
+		     <?php foreach($data['departments'] as $dept) { ?> <!--print departmets from database-->
 			<p>
 				<a href="/courses/display/<?=$dept['department']?>"> <?=$dept['department'];?> </a>
 			</p> 

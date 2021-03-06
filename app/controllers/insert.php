@@ -7,7 +7,7 @@ class insert extends Controller {
 		die;
     }
     
-   public function entry()
+   public function entry()  /*function entry check if form is submitted , if yes then fetch data from form */
    {
 	   
        if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -16,8 +16,8 @@ class insert extends Controller {
             $courseName = $_REQUEST['course'];
 		    $departmentName = $_REQUEST['department'];
 		    $programName = $_REQUEST['program'];
-		    $enter = $this->model('User');
-		    $enter->register($courseid,$courseName,$departmentName,$programName); 
+		    $enter = $this->model('User'); 
+		    $enter->register($courseid,$courseName,$departmentName,$programName); /*call user model class and send data as parameters to register function*/
          }	
     }
 

@@ -2,7 +2,7 @@
     <div class="col-sm-auto">
 		<form action="/insert/entry" method="post" >
 		<fieldset>
-			<caption><strong>Insert Detail</strong></caption>
+			<caption><strong>Insert Detail</strong></caption> <!-- Insert Program details -->
 			<table>
 			    <tr>
 				    <td><label for="name">Course Id</label></td>

@@ -10,7 +10,7 @@ class User {
         
     }
 
-	public function register($courseid,$coursename,$departmentname,$programname)
+	public function register($courseid,$coursename,$departmentname,$programname) /*insert data into database*/
 	{   
 		$username = strtoupper($courseid);
 		$coursename = strtoupper($coursename);

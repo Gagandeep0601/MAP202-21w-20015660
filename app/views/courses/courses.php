@@ -12,7 +12,7 @@
 	
 <div class="row">
             <div class="col-lg-12">
-		     <?php foreach($data['courses'] as $course) { ?>
+		     <?php foreach($data['courses'] as $course) { ?> <!-- print courses from database-->
 			<p>
 				<?php echo $course['courseName']; ?>
 				

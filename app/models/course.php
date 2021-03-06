@@ -7,7 +7,7 @@ class course
 	{
         
     }
-	
+	              /*fetch data from database*/
     public function get_all_courses($program)
 	{
 	$db = db_connect();
