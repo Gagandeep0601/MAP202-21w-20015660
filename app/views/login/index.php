@@ -30,6 +30,11 @@
 				<input required type="password" class="form-control" name="password">
 			</div>
 		  <button type="submit" class="btn btn-primary">Login</button>
+			
+			<p>  <!-- link to register file in controller -->
+			<a href="/register">Click here to register your account</a>
+		    </p>
+			
 		</fieldset>
 		</form> 
 	</div>

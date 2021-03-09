@@ -59,6 +59,41 @@ class User {
 			die;
 		}
     }
+	
+	public function signup($username,$password)
+	{   
+		$_SESSION['username'] = $username;	 
+		$username = strtolower($username); /*change into lower character */
+		$passwordhash = password_hash($password,PASSWORD_DEFAULT); /*cnvert password into hash value*/
+		$db = db_connect();
+        $statement = $db->prepare("select * from login WHERE username = :name; "); /*fetch data according to username */
+        $statement->bindValue(':name', $username);
+        $statement->execute();
+        $rows = $statement->fetch(PDO::FETCH_ASSOC);
+		
+		if($rows)     /* if statement execute means , there is same username exits */
+		{
+			echo "<strong>".$username. " username alreay exits</strong";
+			require_once 'app/views/register/register.php';
+		}
+		else
+		{  /* username not exits, insert new user into login database */
+		$insertStatement = $db->prepare("INSERT INTO login(username, password) VALUES (:user,:pass);");
+        $insertStatement->bindValue(':user', $username);
+		$insertStatement->bindValue(':pass',$passwordhash);
+		$insertStatement->execute();	
+             if($insertStatement)  /* if statement execute then user will direclty jump to home page*/
+			 {
+		     $_SESSION['auth'] = 1;
+			 header('Location: /home');
+			 }
+		     else
+			 {
+			 echo "Try Again"; /* if not execute , then render to register view page */
+			 require_once 'app/views/register/register.php';
+			 }
+		}
+	}
 
 
 }
