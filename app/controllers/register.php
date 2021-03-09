@@ -27,11 +27,13 @@ class register extends Controller
 	   {
 		echo "<strong>Password must contain atleat one numeric value , special character and length should not be less than 8 character</strong>";
 	   }
+		die;
     }
 	else
 	{
 		$registeruser = $this->model('User');  /*if all the conditions of username and password true, user will be redirect to User model*/
 		$registeruser->signup($username,$password); /*pass username and password as a argumemts to the funtion named signup of User model*/
+		die;
 	}
   }
 	

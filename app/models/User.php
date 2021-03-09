@@ -72,9 +72,10 @@ class User {
         $rows = $statement->fetch(PDO::FETCH_ASSOC);
 		
 		if($rows)     /* if statement execute means , there is same username exits */
-		{
-			echo "<strong>".$username. " username alreay exits</strong";
+		{   
 			require_once 'app/views/register/register.php';
+			echo "<h1><strong>".$username. " username alreay exists</strong></h1>";
+			die;
 		}
 		else
 		{  /* username not exits, insert new user into login database */
@@ -86,11 +87,13 @@ class User {
 			 {
 		     $_SESSION['auth'] = 1;
 			 header('Location: /home');
+			die;
 			 }
 		     else
 			 {
 			 echo "Try Again"; /* if not execute , then render to register view page */
 			 require_once 'app/views/register/register.php';
+			  die;
 			 }
 		}
 	}
