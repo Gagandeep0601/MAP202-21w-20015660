@@ -71,14 +71,14 @@ class User {
         $statement->execute();
         $rows = $statement->fetch(PDO::FETCH_ASSOC);
 		
-		if($rows)     /* if statement execute means , there is same username exits */
-		{   
-			require_once 'app/views/register/register.php';
-			echo "<h1><strong>".$username. " username alreay exists</strong></h1>";
+		if($rows>0)     /* if statement execute means , there is same username exits */
+		{    $warning=array();
+			array_push($warning, "username already exits");
+			return $warning;
 			die;
 		}
 		else
-		{  /* username not exits, insert new user into login database */
+		{  /* username not exits, insert new user into login database */	
 		$insertStatement = $db->prepare("INSERT INTO login(username, password) VALUES (:user,:pass);");
         $insertStatement->bindValue(':user', $username);
 		$insertStatement->bindValue(':pass',$passwordhash);
@@ -91,12 +91,32 @@ class User {
 			 }
 		     else
 			 {
-			 echo "Try Again"; /* if not execute , then render to register view page */
-			 require_once 'app/views/register/register.php';
+			 echo "Try Again"; /* if not execute */
 			  die;
 			 }
 		}
 	}
+	
+	
+	public function verifyRequirements($username,$password)  //verify all the requirements of username and password 
+	{
+	 $nospace = preg_match('/\s/',$username);  
+	  $specialCharsInUsername = preg_match('@[^\w]@', $username);      
+      $number    = preg_match('@[0-9]@', $password);          
+      $specialCharsInPassword = preg_match('@[^\w]@', $password);   
+		$error = array();  	  	
+	
+		if($nospace || $specialCharsInUsername)   
+		{
+        array_push($error, '<strong>There should not be space or special character in username</strong><br>');  
+		}
+		if(!$number || !$specialCharsInPassword || strlen($password)<8 ) 
+		{
+		array_push($error,"<strong>Password must contain atleat one numeric value , special character and length should not be less than 8 character</strong>");
+	   }
+		return $error;
+		die;
+		}
 
 
 }
