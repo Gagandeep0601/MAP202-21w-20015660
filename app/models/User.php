@@ -72,9 +72,8 @@ class User {
         $rows = $statement->fetch(PDO::FETCH_ASSOC);
 		
 		if($rows>0)     /* if statement execute means , there is same username exits */
-		{    $warning=array();
-			array_push($warning, "username already exits");
-			return $warning;
+		{   
+			return $rows;
 			die;
 		}
 		else
@@ -102,22 +101,33 @@ class User {
 	{
 	 $nospace = preg_match('/\s/',$username);  
 	  $specialCharsInUsername = preg_match('@[^\w]@', $username);      
-      $number    = preg_match('@[0-9]@', $password);          
-      $specialCharsInPassword = preg_match('@[^\w]@', $password);   
-		$error = array();  	  	
+      $number    = preg_match('@[0-9]@', $password);
+      $htmlInUsername = preg_match("/<[^<]+>/",$username); //html tag in username	  
+	   $numberinUsername   = preg_match('@[0-9]@', $username); //numeric in username
+      $specialCharsInPassword = preg_match('@[^\w]@', $password);    	  	
 	
-		if($nospace || $specialCharsInUsername)   
-		{
-        array_push($error, '<strong>There should not be space or special character in username</strong><br>');  
-		}
-		if(!$number || !$specialCharsInPassword || strlen($password)<8 ) 
-		{
-		array_push($error,"<strong>Password must contain atleat one numeric value , special character and length should not be less than 8 character</strong>");
-	   }
-		return $error;
+		if($nospace || $specialCharsInUsername || $htmlInUsername || $numberinUsername || !$number || !$specialCharsInPassword || strlen($password)<8)   
+		{ // show the warning if any condition failed
+        $warning = "<strong>There should not be space or special character , html tag and numeric value in username and <br> Password must contain atleat one numeric value , special character and length should not be less than 8 character </strong><br>";  
+
+	   
+		return $warning;
 		die;
 		}
-
+	}	
+         
+	public function deleteAccount($username)
+	{
+		$db = db_connect();
+        $statement = $db->prepare("DELETE FROM login WHERE username = :name;");
+        $statement->bindValue(':name', $username);
+        $statement->execute();
+		if($statement)
+		{
+			 unset($_SESSION['auth']); 
+			header('Location: /login');
+		}
+	}
 
 }
 

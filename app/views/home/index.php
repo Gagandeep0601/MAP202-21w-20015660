@@ -5,15 +5,16 @@
             <div class="col-lg-12">
                 <h1>Welcome <?php echo $_SESSION['username'] ?> </h1>
                 <p class="lead"> <?= date("F jS, Y"); ?></p>
-				<p>
-					<a href="/courses">DEPARTMENT</a>  <!--link to see department detail-->
+				<!--<p>
+					<a href="/courses">DEPARTMENT</a> 
 				</p>
 				<p>
-					<a href="/insert">INSERT HERE</a> <!--link to insert the data-->
+					<a href="/insert">INSERT HERE</a> 
 				</p>
+				<a href="/register/delete" >Delete your Account</a>
 				<form action="/logout/index" method="post">
 			    <button type="submit" class="btn btn-primary">Logout</button>
-				</form>
+				</form>-->
             </div>
         </div>
     </div>

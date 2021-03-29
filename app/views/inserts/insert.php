@@ -1,3 +1,4 @@
+<?php require_once 'app/views/templates/header.php' ?>
 <div class="row">
     <div class="col-sm-auto">
 		<form action="/insert/entry" method="post" >
@@ -30,5 +31,5 @@
 		</form> 
 	</div>
 </div>
-
+<?php require_once 'app/views/templates/footer.php' ?>
 

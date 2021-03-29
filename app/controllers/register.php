@@ -28,4 +28,11 @@ class register extends Controller
 
 	 }
 	
+	public function delete()
+	{ 
+		$username = $_SESSION['username']; 
+		$delete = $this->model('User');
+		$delete->deleteAccount($username);
+	}
+	
 }	

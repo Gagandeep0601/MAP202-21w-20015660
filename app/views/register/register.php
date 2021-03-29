@@ -1,6 +1,11 @@
-
+<?php require_once 'app/views/templates/headerPublic.php' ?>
 <div class="row">
     <div class="col-sm-auto">
+		<?php
+		if($data['errors'])
+		echo $data['errors'];
+			?>
+		
 		<form action="/register/verify" method="post" >
 		<fieldset>
 			<caption><strong>Register Your Account</strong></caption> <!--  Register form -->
@@ -8,9 +13,9 @@
 			    <tr>
 				    <td><label for="name">Username</label></td>
 				    <td><input required type="text" class="form-control" name="username">
-						<?php foreach($data['alreadyuser'] as $warn)
+						<?php if($data['alreadyuser'])
                          {
-	                       echo $warn;
+	                       echo "username already in use";
                           }?></td>
 			    </tr>
 		
@@ -21,22 +26,9 @@
 			</table>	
 		  <button type="submit" class="btn btn-primary">Submit</button>	
 		</fieldset>
-			   <?php foreach($data['errors'] as $error) { ?>  
-			<p> 
-				
-				<?php 
-					if($i==0)
-					{
-						echo "<h3>Warnings</h3>";
-					}
-	              echo $error;
-				   $i=1;
-				?>
-				
-			</p> 
-		          <?php }?>	
+
 		</form> 
 	</div>
 </div>
-
+ <?php require_once 'app/views/templates/footer.php' ?>
 
