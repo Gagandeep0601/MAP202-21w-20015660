@@ -3,7 +3,24 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Welcome <?php echo $_SESSION['username'] ?> </h1>
+				<?php
+		          if($data['error']){?>
+					  <div class="alert alert-dismissible alert-danger">
+                      <?=$data['error']?>
+                     </div>
+		         <?php 
+				  }
+			     ?>
+						<?php
+	            	if($data['onlyAdmin']){?>
+		            <div class="alert alert-dismissible alert-danger">
+                      <?=$data['onlyAdmin']?>
+                     </div>
+		         <?php 
+				  }
+			     ?>
+				
+                <h1>Welcome <?php echo $_SESSION['username'] ?> to Home page </h1>
                 <p class="lead"> <?= date("F jS, Y"); ?></p>
 				<!--<p>
 					<a href="/courses">DEPARTMENT</a> 

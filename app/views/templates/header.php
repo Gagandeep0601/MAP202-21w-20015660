@@ -37,6 +37,15 @@ if (!isset($_SESSION['auth'])) {
       <li class="nav-item">
         <a class="nav-link" href="/insert">Insert Detail</a>
       </li>
+		<li class="nav-item">
+        <a class="nav-link" href="/staff">Staff Detail</a>
+      </li>
+		<li class="nav-item">
+        <a class="nav-link" href="/manager">Manager Detail</a>
+      </li>
+		 <li class="nav-item">
+        <a class="nav-link" href="/admin">Admin Detail</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/register/delete">Delete Account</a>
       </li>

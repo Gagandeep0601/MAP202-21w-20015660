@@ -5,11 +5,10 @@
             <div class="col-lg-12">
                 <h1>LOGIN</h1>
 				<?php if($_SESSION['failedAuth']) {?>
-				<p>
-				   Please try again.
-				</p>
-				 <?php echo  '<strong>You have '.$_SESSION['failedAuth'].' failed Attempts!</strong>'; ?>	
 				
+				<div class="alert alert-dismissible alert-danger">
+               <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Please try again <br>You have <?=$_SESSION['failedAuth']?> failed Attempts!</strong>
 				<?php
 				}
                 ?>
