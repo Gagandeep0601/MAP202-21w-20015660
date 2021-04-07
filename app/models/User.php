@@ -46,7 +46,9 @@ class User {
 		if (password_verify($password, $rows['password'])) {
 			$_SESSION['auth'] = 1;
 			$_SESSION['username'] = ucwords($username);
-			$_SESSION['role'] = $rows['permission'];
+			
+			$_SESSION['role'] =$this->getrole( $rows['permission']);
+			
 			unset($_SESSION['failedAuth']);
 			header('Location: /home');
 			die;
@@ -130,5 +132,16 @@ class User {
 		}
 	}
 
+	public function getrole($id)
+	{
+	  $db = db_connect();
+        $statement = $db->prepare("select role from permissions
+                                WHERE id = :id; ");
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        $rows = $statement->fetch(PDO::FETCH_ASSOC);	
+		return $rows['role'];
+	}
+	
 }
 

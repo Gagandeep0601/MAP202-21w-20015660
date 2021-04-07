@@ -3,7 +3,7 @@
 class manager extends Controller {
 
     public function index() {
-		if($_SESSION['role'] == 1){   // if staff redirect back to home page and show warning 
+		if($_SESSION['role'] == "staff"){   // if staff redirect back to home page and show warning 
 			$error = "<strong>Not Allowed! <br> Staff member cannot access manager page!<strong>";
 	        $this->view('home/index', ['error' => $error]); 
 			die;
