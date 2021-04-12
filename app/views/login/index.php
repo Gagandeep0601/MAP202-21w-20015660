@@ -12,6 +12,9 @@
 				<?php
 				}
                 ?>
+				<div class="alert alert-dismissible alert-primary">
+                <strong><?= $_SESSION['weather']?></strong>
+                </div>
             </div>
         </div>
     </div>

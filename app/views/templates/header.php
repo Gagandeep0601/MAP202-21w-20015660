@@ -55,6 +55,7 @@ if (!isset($_SESSION['auth'])) {
     </ul>
  </div>
 </nav>
+	<span class="badge badge-info"><?= $_SESSION['weather']?></span>
         <!--
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
