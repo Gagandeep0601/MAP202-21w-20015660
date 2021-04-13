@@ -3,11 +3,10 @@
 class Login extends Controller {
 
     public function index() {
-		$weather = $this->model('weather');	
-		$weather->get_weather('Khanna'); // pass city name as a parameter
-		
-		
-	    $this->view('login/index');
+		$weather = $this->model('weather');
+		$city = $weather->getCurrentCity();//call function to get city name
+		$weather->get_weather($city);
+		$this->view('login/index');
 		die;
     }
     
